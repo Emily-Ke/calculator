@@ -1,0 +1,13 @@
+{
+  "name": "calculator",
+  "version": "0.1.0",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
+  }
+}
