@@ -20,7 +20,24 @@ for(let operatorKey of operatorKeys) {
     }
   } else {
     operatorKey.onclick = () => {
-      calculator.updateOperator(operatorKey.textContent);
+      let operator;
+      switch(operatorKey.textContent) {
+        case '+':
+          operator = 'add';
+          break;
+        case String.fromCharCode(45):
+          operator = 'subtract';
+          break;
+        case 'x':
+          operator = 'multiply';
+          break;
+        case String.fromCharCode(247):
+          operator = 'divide';
+          break;
+        default:
+          break;
+      }
+      calculator.updateOperator(operator);
       updateDisplay();
     }
   }

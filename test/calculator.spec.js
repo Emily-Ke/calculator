@@ -147,7 +147,7 @@ describe('Calculator', function() {
     
     it('should update second number if operator is specified', function() {
       calculator.values.firstNumber = 1;
-      calculator.values.operator = '+';
+      calculator.values.operator = 'add';
       calculator.updateNumberValue(2);
       const updatedNumber = calculator.values.secondNumber;
       assert.equal(updatedNumber, 2);
@@ -157,7 +157,7 @@ describe('Calculator', function() {
       function() {
         calculator.values.firstNumber = 1;
         calculator.values.secondNumber = 2;
-        calculator.values.operator = '+';
+        calculator.values.operator = 'add';
         calculator.calculate();
         calculator.updateNumberValue(1);
         assert.equal(calculator.values.firstNumber, 1);
@@ -170,24 +170,24 @@ describe('Calculator', function() {
       calculator = new Calculator();
     });
     it('should not update if the first number is empty', function() {
-      calculator.updateOperator('+');
+      calculator.updateOperator('add');
       const updatedOperator = calculator.values.operator;
       assert.equal(updatedOperator, '');
     });
     
     it('should update if the first number is not empty', function() {
       calculator.values.firstNumber = 1;
-      calculator.updateOperator('+');
+      calculator.updateOperator('add');
       const updatedOperator = calculator.values.operator;
-      assert.equal(updatedOperator, '+');
+      assert.equal(updatedOperator, 'add');
     });
 
     it('should calculate and then update if both the first and second number have values',
       function() {
         calculator.values.firstNumber = 1;
         calculator.values.secondNumber = 1;
-        calculator.values.operator = '+';
-        calculator.updateOperator(String.fromCharCode(45));
+        calculator.values.operator = 'add';
+        calculator.updateOperator('subtract');
         assert.equal(
           calculator.values.firstNumber,
           2,
@@ -199,7 +199,7 @@ describe('Calculator', function() {
           `Expected NaN to be ${calculator.values.secondNumber}`)
         assert.equal(
           calculator.values.operator,
-          String.fromCharCode(45),
+          'subtract',
           'operation should update');
       }
     );
@@ -212,13 +212,13 @@ describe('Calculator', function() {
 
     it('should throw an error if the first number is not set', function() {
       calculator.values.secondNumber = 1;
-      calculator.values.operator = '+';
+      calculator.values.operator = 'add';
       assert.throws(function (){calculator.calculate()}, Error);
     });
     
     it('should throw an error if the second number is not set', function() {
       calculator.values.firstNumber = 1;
-      calculator.values.operator = '+';
+      calculator.values.operator = 'add';
       assert.throws(function (){calculator.calculate()}, Error);
     });
     
@@ -231,7 +231,7 @@ describe('Calculator', function() {
     it('should calculate 1 + 1 = 2', function() {
       calculator.values.firstNumber = 1;
       calculator.values.secondNumber = 1;
-      calculator.values.operator = '+';
+      calculator.values.operator = 'add';
       const result = calculator.calculate();
       assert.equal(result, 2);
     });
@@ -239,7 +239,7 @@ describe('Calculator', function() {
     it('should calculate 2 - 1 = 1', function() {
       calculator.values.firstNumber = 2;
       calculator.values.secondNumber = 1;
-      calculator.values.operator = String.fromCharCode(45);
+      calculator.values.operator = 'subtract';
       const result = calculator.calculate();
       assert.equal(result, 1);
     });
@@ -247,7 +247,7 @@ describe('Calculator', function() {
     it('should calculate 1 * 1 = 1', function() {
       calculator.values.firstNumber = 1;
       calculator.values.secondNumber = 1;
-      calculator.values.operator = 'x';
+      calculator.values.operator = 'multiply';
       const result = calculator.calculate();
       assert.equal(result, 1);
     });
@@ -255,7 +255,7 @@ describe('Calculator', function() {
     it('should calculate 6 / 2 = 3', function() {
       calculator.values.firstNumber = 6;
       calculator.values.secondNumber = 2;
-      calculator.values.operator = String.fromCharCode(247);
+      calculator.values.operator = 'divide';
       const result = calculator.calculate();
       assert.equal(result, 3);
     });
@@ -263,7 +263,7 @@ describe('Calculator', function() {
     it("should update the calculator's values after calculation", function() {
       calculator.values.firstNumber = 6;
       calculator.values.secondNumber = 2;
-      calculator.values.operator = String.fromCharCode(247);
+      calculator.values.operator = 'divide';
       const result = calculator.calculate();
       assert.equal(
         calculator.values.firstNumber,

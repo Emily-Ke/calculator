@@ -74,16 +74,16 @@ class Calculator {
     const { firstNumber, secondNumber, operator } = this.values;
     let result;
     switch(operator) {
-      case '+':
+      case 'add':
         result = this.add(firstNumber, secondNumber);
         break;
-      case String.fromCharCode(45):
+      case 'subtract':
         result = this.subtract(firstNumber, secondNumber);
         break;
-      case 'x':
+      case 'multiply':
         result = this.multiply(firstNumber, secondNumber);
         break;
-      case String.fromCharCode(247):
+      case 'divide':
         result = this.divide(firstNumber, secondNumber);
         break;
       default:
