@@ -1,12 +1,12 @@
-const url = 'http://localhost:1234';
+
 
 describe('Calculator Display', function() {
-  beforeEach(function () {
-    cy.visit(url);
+  before(function () {
+    cy.visit('/');
   });
 
   it('should have a 0 button', function() {
-    cy.contains('1');
+    cy.contains('0');
   });
   
   it('should have a 1 button', function() {
