@@ -35,20 +35,6 @@ class Calculator {
     return value1 / value2;
   }
 
-  updateNumberValue(value) {
-    const numberToUpdate =
-      this.values.operator.length ? 'secondNumber' : 'firstNumber';
-    if(numberToUpdate === 'firstNumber' && this.isNewSequence) {
-      this.values.firstNumber = value;
-      this.isNewSequence = false;
-    } else {
-      let val =
-        isNaN(this.values[numberToUpdate]) ? 0 : this.values[numberToUpdate];
-      val = val * 10 + value;
-      this.values[numberToUpdate] = val;
-    }
-  }
-
   clear() {
     this.values.firstNumber = NaN;
     this.values.secondNumber = NaN;
@@ -88,6 +74,20 @@ class Calculator {
     this.values.firstNumber = result;
     this.isNewSequence = true;
     return result;
+  }
+
+  updateNumberValue(value) {
+    const numberToUpdate =
+      this.values.operator.length ? 'secondNumber' : 'firstNumber';
+    if(numberToUpdate === 'firstNumber' && this.isNewSequence) {
+      this.values.firstNumber = value;
+      this.isNewSequence = false;
+    } else {
+      let val =
+        isNaN(this.values[numberToUpdate]) ? 0 : this.values[numberToUpdate];
+      val = val * 10 + value;
+      this.values[numberToUpdate] = val;
+    }
   }
 
   updateOperator(operation) {
