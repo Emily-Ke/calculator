@@ -3,6 +3,10 @@ const calculator = new Calculator;
 
 const display = document.getElementById('display');
 
+function updateDisplay() {
+  display.value = calculator.currentValue();
+}
+
 // clear
 const clearKey = document.getElementById('all-clear');
 clearKey.onclick = () => {
@@ -10,7 +14,7 @@ clearKey.onclick = () => {
   updateDisplay();
 }
 
-// operations
+// operation keys
 const operatorKeys = document.querySelectorAll('.operation');
 for(let operatorKey of operatorKeys) {
   if(operatorKey.textContent === '=') {
@@ -43,15 +47,11 @@ for(let operatorKey of operatorKeys) {
   }
 }
 
-// numbers
+// number keys
 const numberKeys = document.querySelectorAll('.number');
 for(let numberKey of numberKeys) {
   numberKey.onclick = () => {
     calculator.updateNumberValue(Number(numberKey.textContent));
     updateDisplay();
   }
-}
-
-function updateDisplay() {
-  display.value = calculator.currentValue();
 }

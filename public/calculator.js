@@ -49,15 +49,10 @@ class Calculator {
     }
   }
 
-  updateOperator(operation) {
-    if(!isNaN(this.values.firstNumber)) {
-      if(isNaN(this.values.secondNumber)) {
-        this.values.operator = operation;
-      } else {
-        this.calculate();
-        this.updateOperator(operation);
-      }
-    }
+  clear() {
+    this.values.firstNumber = NaN;
+    this.values.secondNumber = NaN;
+    this.values.operator = '';
   }
 
   calculate() {
@@ -95,10 +90,15 @@ class Calculator {
     return result;
   }
 
-  clear() {
-    this.values.firstNumber = NaN;
-    this.values.secondNumber = NaN;
-    this.values.operator = '';
+  updateOperator(operation) {
+    if(!isNaN(this.values.firstNumber)) {
+      if(isNaN(this.values.secondNumber)) {
+        this.values.operator = operation;
+      } else {
+        this.calculate();
+        this.updateOperator(operation);
+      }
+    }
   }
 };
 
