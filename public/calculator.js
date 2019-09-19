@@ -8,14 +8,10 @@ class Calculator {
     this.isNewSequence = true;
   }
 
-  currentValue() {
-    if(this.values.secondNumber) {
-      return this.values.secondNumber;
-    } else if (isNaN(this.values.firstNumber)) {
-      return 0;
-    } else {
-      return this.values.firstNumber;
-    }
+  clear() {
+    this.values.firstNumber = NaN;
+    this.values.secondNumber = NaN;
+    this.values.operator = '';
   }
 
   add(value1, value2) {
@@ -33,12 +29,6 @@ class Calculator {
   divide(value1, value2) {
     if(value2 === 0) { throw new Error('cannot divide by zero'); }
     return value1 / value2;
-  }
-
-  clear() {
-    this.values.firstNumber = NaN;
-    this.values.secondNumber = NaN;
-    this.values.operator = '';
   }
 
   calculate() {
@@ -74,6 +64,16 @@ class Calculator {
     this.values.firstNumber = result;
     this.isNewSequence = true;
     return result;
+  }
+
+  currentValue() {
+    if(this.values.secondNumber) {
+      return this.values.secondNumber;
+    } else if (isNaN(this.values.firstNumber)) {
+      return 0;
+    } else {
+      return this.values.firstNumber;
+    }
   }
 
   updateNumberValue(value) {
