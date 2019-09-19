@@ -26,7 +26,7 @@
   border: none;
 }
 
-.key {
+.calculator button {
   cursor: pointer;
   box-sizing: border-box;
   height: 50px;
@@ -39,32 +39,15 @@
   border: thin solid #999;
 }
 
-.key:focus {
+.calculator button:focus {
   outline: 0;
   border: medium solid #999;
 }
 
-#all-clear {
-  grid-column: 1 / 4;
-}
-
-.first-key {
-  grid-column: 1 / 2;
-}
-
-.second-key {
-  grid-column: 2 / 3;
-}
-
-.third-key {
-  grid-column: 3 / 4;
-}
-
-.operation {
-  grid-column: 4 / 5;
+.calculator button.operator {
   background: orange;
 }
 
-#zero {
-  grid-column: 1 / 4;
+.calculator button.span-3 {
+  grid-column: span 3;
 }
