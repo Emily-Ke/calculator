@@ -53,7 +53,7 @@ describe('Calculator Functionality', function() {
       cy.get('#display').should('have.value', '9');
     });
   });
-
+  
   describe('Mathematic Operations', function() {
     it('should add 1 + 2', function() {
       cy.contains('1').click();
