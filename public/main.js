@@ -52,6 +52,7 @@ display.type = 'number';
 display.value = 0;
 display.disabled = true;
 display.setAttribute('id', 'display');
+display.setAttribute('aria-label', 'display screen');
 calculatorElement.appendChild(display);
 
 const calculatorKeyboard = document.createElement('div');
@@ -115,6 +116,7 @@ for(let row of keys) {
     keyButton.appendChild(keyButtonText);
     keyButton.setAttribute('id', key.id);
     if(key.id === 'all-clear') {
+      keyButton.setAttribute('aria-label', 'reset the calculator');
       keyButton.addEventListener('click', () => handleClear());
     }
     if(key.type) {
@@ -125,8 +127,10 @@ for(let row of keys) {
         });
       } else if (key.type === 'operator') {
         if(key.text === '=') {
+          keyButton.setAttribute('aria-label', 'calculate');
           keyButton.addEventListener('click', () => handleCalculate());
         } else {
+          keyButton.setAttribute('aria-label', key.id);
           keyButton.addEventListener('click', () => {
             handleOperatorChange(key.text);
           });
