@@ -25,3 +25,4 @@ npm test
 ```
 npm run cypress:open
 ```
+  - in order to run this Cypress test, you must have your server running.
