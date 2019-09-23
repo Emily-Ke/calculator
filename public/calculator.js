@@ -8,14 +8,10 @@ class Calculator {
     this.isNewSequence = true;
   }
 
-  currentValue() {
-    if(this.values.secondNumber) {
-      return this.values.secondNumber;
-    } else if (isNaN(this.values.firstNumber)) {
-      return 0;
-    } else {
-      return this.values.firstNumber;
-    }
+  clear() {
+    this.values.firstNumber = NaN;
+    this.values.secondNumber = NaN;
+    this.values.operator = '';
   }
 
   add(value1, value2) {
@@ -33,31 +29,6 @@ class Calculator {
   divide(value1, value2) {
     if(value2 === 0) { throw new Error('cannot divide by zero'); }
     return value1 / value2;
-  }
-
-  updateNumberValue(value) {
-    const numberToUpdate =
-      this.values.operator.length ? 'secondNumber' : 'firstNumber';
-    if(numberToUpdate === 'firstNumber' && this.isNewSequence) {
-      this.values.firstNumber = value;
-      this.isNewSequence = false;
-    } else {
-      let val =
-        isNaN(this.values[numberToUpdate]) ? 0 : this.values[numberToUpdate];
-      val = val * 10 + value;
-      this.values[numberToUpdate] = val;
-    }
-  }
-
-  updateOperator(operation) {
-    if(!isNaN(this.values.firstNumber)) {
-      if(isNaN(this.values.secondNumber)) {
-        this.values.operator = operation;
-      } else {
-        this.calculate();
-        this.updateOperator(operation);
-      }
-    }
   }
 
   calculate() {
@@ -95,10 +66,39 @@ class Calculator {
     return result;
   }
 
-  clear() {
-    this.values.firstNumber = NaN;
-    this.values.secondNumber = NaN;
-    this.values.operator = '';
+  currentValue() {
+    if(this.values.secondNumber) {
+      return this.values.secondNumber;
+    } else if (isNaN(this.values.firstNumber)) {
+      return 0;
+    } else {
+      return this.values.firstNumber;
+    }
+  }
+
+  updateNumberValue(value) {
+    const numberToUpdate =
+      this.values.operator.length ? 'secondNumber' : 'firstNumber';
+    if(numberToUpdate === 'firstNumber' && this.isNewSequence) {
+      this.values.firstNumber = value;
+      this.isNewSequence = false;
+    } else {
+      let val =
+        isNaN(this.values[numberToUpdate]) ? 0 : this.values[numberToUpdate];
+      val = val * 10 + value;
+      this.values[numberToUpdate] = val;
+    }
+  }
+
+  updateOperator(operation) {
+    if(!isNaN(this.values.firstNumber)) {
+      if(isNaN(this.values.secondNumber)) {
+        this.values.operator = operation;
+      } else {
+        this.calculate();
+        this.updateOperator(operation);
+      }
+    }
   }
 };
 

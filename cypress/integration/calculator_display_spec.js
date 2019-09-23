@@ -54,7 +54,7 @@ describe('Calculator Display', function() {
   });
   
   it('should have a subtract button', function() {
-    cy.get('#subtract');
+    cy.contains(String.fromCharCode(45));
   });
   
   it('should have a multiply button', function() {
@@ -62,7 +62,7 @@ describe('Calculator Display', function() {
   });
   
   it('should have a divide button', function() {
-    cy.get('#divide');
+    cy.contains(String.fromCharCode(247));
   });
   
   it('should have an AC button', function() {

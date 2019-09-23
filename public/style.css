@@ -12,21 +12,33 @@
 }
 
 .calculator {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   width: 200px;
 }
 
+.calculator-keyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 #display {
-  grid-column: 1 / 5;
+  /* grid-column: 1 / 5; */
+  width: 100%;
   background-color: #999;
   color: #000;
   font-size: 48px;
   text-align: right;
   border: none;
+  padding: 0.15em;
 }
 
-.key {
+/* removes arrows from number input */
+#display::-webkit-inner-spin-button, 
+#display::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.calculator-keyboard button {
   cursor: pointer;
   box-sizing: border-box;
   height: 50px;
@@ -39,32 +51,19 @@
   border: thin solid #999;
 }
 
-.key:focus {
+.calculator-keyboard button.operator {
+  background: orange;
+}
+
+.calculator-keyboard button:focus {
   outline: 0;
   border: medium solid #999;
 }
 
-#all-clear {
-  grid-column: 1 / 4;
+.calculator-keyboard button.operator:focus {
+  border-color: #555;
 }
 
-.first-key {
-  grid-column: 1 / 2;
-}
-
-.second-key {
-  grid-column: 2 / 3;
-}
-
-.third-key {
-  grid-column: 3 / 4;
-}
-
-.operation {
-  grid-column: 4 / 5;
-  background: orange;
-}
-
-#zero {
-  grid-column: 1 / 4;
+.calculator-keyboard button.span-3 {
+  grid-column: span 3;
 }
